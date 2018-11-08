@@ -139,14 +139,12 @@ function applyPatch(parent, patch, index = 0) {
       break;
     case REPLACE:
       parent.replaceChild(createElement(patch.newNode), el);
-
       break;
     case UPDATE:
       patchProps(el, patch.props);
-      patch.children.forEach((p, i)=> {
-          applyPatch(el, p, i)
-      })
-      
+      patch.children.forEach((p, i) => {
+        applyPatch(el, p, i);
+      });
       break;
   }
 }
