@@ -14,7 +14,7 @@ todo:
 
 ### 依赖：
 
-- `transform-react-jsx`：jsx转js，React.createElement用自己编写的代替
+- transform-react-jsx：jsx转js，`React.createElement`用自定义的`h`代替
 
 
 
@@ -22,3 +22,4 @@ todo:
 
 -[Virtual DOM and diffing algorithm](https://gist.github.com/Raynos/8414846)
 -[Matt-Esch/virtual-dom](https://github.com/Matt-Esch/virtual-dom)
+-[Diff two lists in O(n)](https://github.com/livoras/list-diff)
