@@ -16,7 +16,7 @@ function listDiff(oldList, newList) {
     freeIndex = 0,
     freeItem,
     simulateItem,
-  simulateItemKey;
+    simulateItemKey;
 
   while (i < oldList.length) {
     item = oldList[i];
@@ -72,7 +72,8 @@ function listDiff(oldList, newList) {
           // ???
           // if remove current simulateItem make item in right place
           // then just remove it
-          var nextItemKey = simulateList[j + 1] && simulateList[j + 1]['key'] || undefined;
+          var nextItemKey =
+            (simulateList[j + 1] && simulateList[j + 1]["key"]) || undefined;
           if (nextItemKey === itemKey) {
             remove(i);
             removeSimulate(j);
@@ -84,25 +85,18 @@ function listDiff(oldList, newList) {
         }
       }
     } else {
-      insert(i, item)
+      insert(i, item);
     }
 
-    i++
+    i++;
   }
 
-    //if j is not remove to the end, remove all the rest item
-    var k = simulateList.length - j
-    while (j++ < simulateList.length) {
-      k--
-      remove(k + i)
-    }
-
-
-
-
-
-
-
+  //if j is not remove to the end, remove all the rest item
+  var k = simulateList.length - j;
+  while (j++ < simulateList.length) {
+    k--;
+    remove(k + i);
+  }
 
   function remove(index) {
     moves.push({ index, type: 0 });
@@ -120,10 +114,7 @@ function listDiff(oldList, newList) {
     simulateList.splice(index, 1);
   }
 
-  return {
-    moves,
-    children
-  };
+  return moves;
 }
 
 // @{params} Array
@@ -147,30 +138,27 @@ function keyIndex(list) {
 }
 
 const oldList = [
-  {key: 'a', name: 'A'},
-  {key: 'b', name: 'B'},
-  {key: 'c', name: 'C'},
-  {key: 'd', name: 'D'},
-  {key: 'e', name: 'E'},
+  { key: "a", name: "A" },
+  { key: "b", name: "B" },
+  { key: "c", name: "C" },
+  { key: "d", name: "D" },
+  { key: "e", name: "E" }
 ];
 const moves = listDiff(oldList, [
-  {key: 'c', name: 'C'},
-  {key: 'a', name: 'A'},
-  {key: 'g', name: 'G'},
-  {key: 'b', name: 'B'},
-  {key: 'e', name: 'E'},
-  {key: 'f', name: 'F'},
+  { key: "c", name: "C" },
+  { key: "a", name: "A" },
+  { key: "g", name: "G" },
+  { key: "b", name: "B" },
+  { key: "e", name: "E" },
+  { key: "f", name: "F" }
 ]);
 
-
-
-const result = oldList.slice()
-moves.moves.forEach(function(move) {
-
+const result = oldList.slice();
+moves.forEach(function(move) {
   if (move.type === 0) {
-    result.splice(move.index, 1) // type 0 is removing
+    result.splice(move.index, 1); // type 0 is removing
   } else {
-    result.splice(move.index, 0, move.item) // type 1 is inserting
+    result.splice(move.index, 0, move.item); // type 1 is inserting
   }
-})
-console.log(result)
+});
+console.log(result);
