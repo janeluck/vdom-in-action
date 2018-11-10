@@ -154,6 +154,7 @@ const moves = listDiff(oldList, [
 ]);
 
 const result = oldList.slice();
+console.log(moves)
 moves.forEach(function(move) {
   if (move.type === 0) {
     result.splice(move.index, 1); // type 0 is removing
